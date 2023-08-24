@@ -1,0 +1,26 @@
+.container {
+    position: relative;
+    max-width: 100%;
+}
+
+.overlay-text {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(242, 162, 162, 0); /* Set to fully transparent */
+    padding: 20px;
+    text-align: center;
+    color: rgb(255, 123, 0);
+}
+
+.overlay-image{
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(242, 162, 162, 0); /* Set to fully transparent */
+    padding: 20px;
+    text-align: center;
+    color: rgb(255, 123, 0);
+}
