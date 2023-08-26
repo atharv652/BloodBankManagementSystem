@@ -5,4 +5,3 @@ public class ItemNotFoundException extends RuntimeException{
 		super("Could not find the item with id " +id);
 	}
 }
-	

@@ -1,5 +1,6 @@
 package com.example.demo.entities;
 
+
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -23,42 +24,64 @@ public class Admin {
 	private int qty;
 	@Column(name = "`desc`")
 	private String desc;
-//	private Date expiry_date;
+	private double price;
+	
 	public Admin() {
 		super();
 	}
-	public Admin(int sid, String blood_grp, int qty, String desc) {
+
+	public Admin(int sid, String blood_grp, int qty, String desc, double price) {
 		super();
 		this.sid = sid;
 		this.blood_grp = blood_grp;
 		this.qty = qty;
 		this.desc = desc;
-//		this.expiry_date = expiry_date;
+		this.price = price;
 	}
+
 	public int getSid() {
 		return sid;
 	}
+
 	public void setSid(int sid) {
 		this.sid = sid;
 	}
+
 	public String getBlood_grp() {
 		return blood_grp;
 	}
+
 	public void setBlood_grp(String blood_grp) {
 		this.blood_grp = blood_grp;
 	}
+
 	public int getQty() {
 		return qty;
 	}
+
 	public void setQty(int qty) {
 		this.qty = qty;
 	}
+
 	public String getDesc() {
 		return desc;
 	}
+
 	public void setDesc(String desc) {
 		this.desc = desc;
 	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
+	
+}
+	
 //	public Date getExpiry_date() {
 //		return expiry_date;
 //	}
@@ -68,4 +91,4 @@ public class Admin {
 //	
 	
 	
-}
+

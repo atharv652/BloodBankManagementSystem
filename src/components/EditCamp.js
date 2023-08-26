@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-export default function EditStock(){
+export default function EditCamp(){
 
     let navigate=useNavigate();
     const {id} = useParams()
@@ -11,38 +11,37 @@ export default function EditStock(){
     console.log('ID from useParams:', id);
 
 
-    const [stock,setStock]=useState({
-        blood_grp : "",
-        qty : "",
-        desc : "",
-        price : ""
+    const [camp,setCamp]=useState({
+        location : "",
+        date : "",
+        time : ""
     })
 
-    const{blood_grp,qty,desc,price}=stock
+    const{location,date,time}=camp
 
     const onInputChange = (e) => {
-      // alert(id)
+    //   alert(id)
         const { name, value } = e.target;
-        setStock({
-          ...stock,
+        setCamp({
+          ...camp,
           [name]: value,
         });
       };
 
       useEffect(()=>{
-        loadStock()
+        loadCamp()
       }, []);
 
       const onSubmit = async (e) => {
         e.preventDefault();
-        await axios.put(`http://localhost:8080/adminC/${id}`, stock);
-        navigate("/admin");
+        await axios.put(`http://localhost:8080/campC/${id}`, camp);
+        navigate("/admin2");
       };
       
 
-      const loadStock =async ()=>{
-        const result=await axios.get(`http://localhost:8080/adminC/${id}`,stock)
-        setStock(result.data)
+      const loadCamp =async ()=>{
+        const result=await axios.get(`http://localhost:8080/campC/${id}`,camp)
+        setCamp(result.data)
       }
       
 
@@ -52,55 +51,41 @@ export default function EditStock(){
                 <h2 className="text-center m-4">Edit Stock</h2>
                 <form onSubmit={(e)=>onSubmit(e)}>
                 <div className="mb-3">
-                    <label htmlFor="blood_grp" className="form-label">
-                        Blood Group
+                    <label htmlFor="location" className="form-label">
+                        Location
                     </label>
                     <input
                     type={"text"}
                     className="form-control"
-                    placeholder="Enter blood group"
-                    name="blood_grp"
-                    value={blood_grp}
+                    placeholder="Enter location"
+                    name="location"
+                    value={location}
                     onChange={(e)=>onInputChange(e)}/>
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="qty" className="form-label">
-                        Quantity
+                    <label htmlFor="date" className="form-label">
+                        Date
                     </label>
                     <input
                     type={"text"}
                     className="form-control"
-                    placeholder="Enter Quantity(in bags)"
-                    name="qty"
-                    value={qty}
+                    placeholder="Enter Date"
+                    name="date"
+                    value={date}
                     onChange={(e)=>onInputChange(e)}/>
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="desc" className="form-label">
-                        Description
+                    <label htmlFor="time" className="form-label">
+                        Time
                     </label>
                     <input
                     type={"text"}
                     className="form-control"
-                    placeholder="Enter Description"
-                    name="desc"
-                    value={desc}
+                    placeholder="Enter Time"
+                    name="time"
+                    value={time}
                     onChange={(e)=>onInputChange(e)}/>
                 </div>
-
-                <div className="mb-3">
-                    <label htmlFor="price" className="form-label">
-                        Price
-                    </label>
-                    <input
-                    type={"text"}
-                    className="form-control"
-                    placeholder="Enter Price"
-                    name="price"
-                    value={price}
-                    onChange={(e)=>onInputChange(e)}/>
-                </div>
-
                 <button type="submit" className="btn btn-outline-primary">Save</button>
                 <Link  className="btn btn-danger mx-2" to="/admin">Cancel</Link>
                 </form>

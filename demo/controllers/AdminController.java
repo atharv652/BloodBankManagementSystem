@@ -1,5 +1,6 @@
 package com.example.demo.controllers;
 
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,6 +52,7 @@ public class AdminController {
                 admin.setBlood_grp(newAdmin.getBlood_grp());
                 admin.setQty(newAdmin.getQty());
                 admin.setDesc(newAdmin.getDesc());
+                admin.setPrice(newAdmin.getPrice());
                 Admin updatedAdmin = adminRepository.save(admin);
                 return ResponseEntity.ok(updatedAdmin);
             })

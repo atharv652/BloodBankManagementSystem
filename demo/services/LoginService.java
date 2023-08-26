@@ -1,5 +1,7 @@
 package com.example.demo.services;
 
+
+import org.springframework.*;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,5 +31,22 @@ public class LoginService {
 		}
 		return l;
 	}
+	
+//	public Login saveLogin(String username, String password)
+//	{
+//		Login l;
+//		Optional<Login> o1=lrepo.saveLogin(username,password);
+//		try
+//		{
+//			l = o1.save();
+//			
+//		}
+//		catch(Exception e)
+//		{
+//			l=null;
+//		}
+//		return l;
+//	}
+	
 }
 

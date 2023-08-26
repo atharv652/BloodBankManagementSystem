@@ -42,7 +42,7 @@ export default function Buy() {
 
     const loadBuy = async () => {
         const result = await axios.get("http://localhost:8080/buy");
-        alert("IN buy")
+        // alert("IN buy")
 
         setBuy(result.data);
     };
@@ -51,12 +51,13 @@ export default function Buy() {
         <div style={styles.container}>
             <h1 style={styles.heading}>Welcome</h1>
             <h2 style={styles.subHeading}>Buying Window</h2>
-            <table style={styles.table} className="table border shadow">
+            <table style={styles.table} className="table border shadow"> 
                 <thead>
                     <tr>
                         <th scope="col">Blood Group</th>
                         <th scope="col">Quantity</th>
                         <th scope="col">Description</th>
+                        <th scope="col">Price</th>
                         <th scope="col">Actions</th>
                     </tr>
                 </thead>
@@ -66,14 +67,17 @@ export default function Buy() {
                             <td style={styles.cell}>{item.blood_grp}</td>
                             <td style={styles.cell}>{item.qty}</td>
                             <td style={styles.cell}>{item.desc}</td>
+                            <td style={styles.cell}>{item.price}</td>
                             <td style={styles.cell}>
-                                <button className="btn btn-outline-primary mx-2" >Buy</button>
-                                {/* Add your button or link for actions here */}
+                            <Link to={`/buywindow/${item.sid}`} className="btn btn-outline-primary mx-2">
+                            Buy
+                            </Link>
                             </td>
                         </tr>
                     ))}
                 </tbody>
             </table>
+            <Link to="logout" className='nav-link btn btn-outline-danger px-3'>Logout</Link>
         </div>
     );
 }

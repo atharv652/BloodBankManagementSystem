@@ -1,6 +1,8 @@
 import {useReducer, useState, } from 'react';
 import { Link, Route, Routes,useNavigate } from 'react-router-dom';
-import Admin from './Admin';
+import Admin from './admin';
+import { useDispatch } from 'react-redux';
+import { login } from './slice';
 export default function LoginComp()
 {
     const init ={
@@ -21,6 +23,7 @@ export default function LoginComp()
     const [info,dispatch]= useReducer(reducer,init);
     const [msg,setMsg]= useState("");
     const navigate = useNavigate();
+    const reduxAction = useDispatch();
 
     const sendData = (e) => {
         e.preventDefault();
@@ -41,11 +44,12 @@ export default function LoginComp()
                        if(Object.keys(obj).length === 0)
                        {
                         console.log(Object.keys(obj).length);
-                        // setMsg("Wrong UID/PWD");
+                        setMsg("Wrong UID/PWD");
                        }
                        else
                        
                        {
+                        reduxAction(login())
                         if(obj.status === false)
                         {
                             alert("Request has not been approved");
@@ -54,20 +58,26 @@ export default function LoginComp()
                             console.log(obj)
                             if((obj).role_id.role_id === 1)
                             {
-                                alert("admin")
+                                // alert("admin")
                                 navigate("/admin");
 
                             }
                             else if((obj).role_id.role_id  === 2)
                             {
-                                alert("receiver");
-                                navigate("/receiver");
+                               //alert("receiver");
+                                navigate("/buy");
 
                             }else if((obj).role_id.role_id === 3)
                             {
-                                alert("donor")
+                                // alert("donor")
                                 navigate("/donor")
                             }
+                            // else if((obj).role_id.role_id  === 4)
+                            // {
+                            //     alert("admin2");
+                            //     navigate("/admin2");
+
+                            // }
                         }
                        }
 
@@ -94,7 +104,7 @@ export default function LoginComp()
                 <button type="submit" className='btn btn-primary' onClick={(e)=>{sendData(e)}}>Submit</button>
                 <button type="reset" className='btn btn-primary' onClick={()=>{dispatch({type:'reset'})}}>Clear</button>
                     
-                <p>{JSON.stringify(info)}</p>
+                {/* <p>{JSON.stringify(info)}</p> */}
                 <p>{msg}</p>
                 
             </form>
