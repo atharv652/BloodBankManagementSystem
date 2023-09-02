@@ -31,9 +31,13 @@ export default function Admin() {
         loadAdmins();
     },[]);//if not given an array then it may run unlimited times
 
-    const loadAdmins=async ()=>{
-        const result=await axios.get("http://localhost:8080/stock")
-        setAdmin(result.data);
+    // const loadAdmins=async ()=>{
+    //     const result=await axios.get("http://localhost:8080/stock")
+    //     setAdmin(result.data);
+
+        const loadAdmins=async ()=>{
+            const result=await axios.get("https://localhost:7105/api/Stocks")
+            setAdmin(result.data);
     }
 
     const deleteStock=async(sid)=>{
@@ -64,7 +68,7 @@ export default function Admin() {
                         admin.map((admin,index)=>(
                             <tr>
                             <th scope="row" key={admin.sid}>{admin.sid}</th>
-                            <td>{admin.blood_grp}</td>
+                            <td>{admin.bloodGrp}</td>
                             <td>{admin.qty}</td>
                             <td>{admin.desc}</td>
                             <td>{admin.price}</td>

@@ -31,8 +31,11 @@ import React, { useEffect, useState } from "react";
             loadCamp();
         },[]);//if not given an array then it may run unlimited times
 
+        // const loadCamp=async ()=>{
+        //     const result=await axios.get("http://localhost:8080/camp")
+        //     setCamp(result.data);
         const loadCamp=async ()=>{
-            const result=await axios.get("http://localhost:8080/camp")
+            const result=await axios.get("https://localhost:7105/api/Camps")
             setCamp(result.data);
         }
 

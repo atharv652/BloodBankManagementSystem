@@ -33,28 +33,30 @@ export default function LoginComp()
             body:JSON.stringify(info)
         }
         fetch("http://localhost:8080/chkLogin",reqOptions)
-        .then(resp => {if(resp.ok)
+        .then(resp => {console.log(resp)
+                       if(resp.ok)
                           return resp.text();
                         else
                           throw new Error("Server error");
                        })
-        .then(text => text.length ? JSON.parse(text):{})
+        .then(text => { return text.length ? JSON.parse(text):{}})
         
-        .then(obj => {
+        .then(obj => { console.log(obj)
                        if(Object.keys(obj).length === 0)
                        {
                         console.log(Object.keys(obj).length);
                         setMsg("Wrong UID/PWD");
                        }
-                       else
-                       
+                       else                       
                        {
+                        console.log("in else")
                         reduxAction(login())
+                        localStorage.setItem("loggedUser", JSON.stringify(obj))
                         if(obj.status === false)
                         {
                             alert("Request has not been approved");
                         }
-                        else{
+                        else{  
                             console.log(obj)
                             if((obj).role_id.role_id === 1)
                             {
@@ -91,7 +93,7 @@ export default function LoginComp()
                     <label htmlFor="username" className="form-label"><b>Username :</b></label> 
                     <input type="text" className="form-control" id="uid" name="username" placeholder='Username' value={info.uid}
                     onChange={(e)=>{dispatch({type:'update',fld:'username',val:e.target.value})}}></input>
-                <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
+                
                 </div>
 
                 <div className="mb-3">

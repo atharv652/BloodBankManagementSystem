@@ -59,7 +59,7 @@ export default function Registration() {
                 }
                 break;
 
-                case 'pincode' : var pattern = /^[0-9]{3,7}$/
+                case 'pincode' : var pattern = /^[0-9]{6}$/
                 if(pattern.test(value)){
                     valid = true;
                     error = "";
