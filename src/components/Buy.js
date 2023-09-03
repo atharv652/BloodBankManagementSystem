@@ -62,8 +62,9 @@ export default function Buy() {
                     </tr>
                 </thead>
                 <tbody>
-                    {buy.map((item, index) => (
-                        <tr key={item.sid}>
+                    {
+                        buy.map((item, index) => (
+                         <tr key={item.sid}>
                             <td style={styles.cell}>{item.blood_grp}</td>
                             <td style={styles.cell}>{item.qty}</td>
                             <td style={styles.cell}>{item.desc}</td>

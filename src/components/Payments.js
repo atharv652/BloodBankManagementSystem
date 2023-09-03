@@ -13,6 +13,9 @@ export default function Payments() {
                     <h1>Payment Successful</h1><br />
                 </tr>
                 <tr>
+                   <h3>You will Receive Blood Shortly</h3> 
+                </tr>
+                <tr>
                     <td>Purchase Date: {formattedDate}</td>
                 </tr>
                 <tr>

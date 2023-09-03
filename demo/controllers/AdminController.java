@@ -52,7 +52,6 @@ public class AdminController {
                 admin.setBlood_grp(newAdmin.getBlood_grp());
                 admin.setQty(newAdmin.getQty());
                 admin.setDesc(newAdmin.getDesc());
-                admin.setPrice(newAdmin.getPrice());
                 Admin updatedAdmin = adminRepository.save(admin);
                 return ResponseEntity.ok(updatedAdmin);
             })

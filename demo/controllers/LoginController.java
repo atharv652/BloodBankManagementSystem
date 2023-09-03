@@ -28,6 +28,10 @@ public class LoginController {
 		return lservice.getLogin(lcheck.getUsername(),lcheck.getPassword());
 	}
 	
-
+//	@PostMapping("/saveInfo")
+//	public Login saveLoin(@RequestBody Login l)
+//	{
+//		LoginService.
+//	}
 }
 
